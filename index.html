@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Revamp Athens Electrical Company - Licensed residential electricians in Athens, GA. Circuit repair, light & outlet installation, smart devices, upgrades, safety inspections. Family-owned, Google Verified. Call (706) 248-1131">
+    <meta name="keywords" content="electricians Athens GA, residential electrician Athens, circuit repair Athens, electrical upgrades Athens, smart home Athens, Revamp Athens Electrical">
+    <title>Revamp Athens Electrical Company | Electricians in Athens, GA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        :root {
+            --red-primary: #dc2626;
+            --red-dark: #991b1b;
+            --red-light: #fecaca;
+            --red-glow: rgba(220, 38, 38, 0.4);
+            --grey-900: #111827;
+            --grey-800: #1f2937;
+            --grey-700: #374151;
+            --grey-600: #4b5563;
+            --grey-400: #9ca3af;
+            --grey-200: #e5e7eb;
+            --grey-100: #f3f4f6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body { 
+            font-family: 'Inter', system-ui, sans-serif; 
+            background: var(--grey-100);
+            color: var(--grey-800);
+            overflow-x: hidden;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--grey-800);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--red-primary);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--red-dark);
+        }
+        
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--grey-900);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .preloader-bolt {
+            font-size: 4rem;
+            color: var(--red-primary);
+            animation: boltPulse 1s ease-in-out infinite;
+        }
+        
+        .preloader-bar {
+            width: 200px;
+            height: 3px;
+            background: var(--grey-700);
+            margin-top: 2rem;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .preloader-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--red-primary), #f87171);
+            width: 0%;
+            animation: loadProgress 2s ease-out forwards;
+        }
+        
+        @keyframes boltPulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px var(--red-glow)); }
+            50% { transform: scale(1.1); filter: drop-shadow(0 0 30px var(--red-glow)); }
+        }
+        
+        @keyframes loadProgress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--red-primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.15s ease, background 0.15s ease;
+            mix-blend-mode: difference;
+        }
+        
+        .cursor.hover {
+            transform: scale(2);
+            background: var(--red-primary);
+        }
+        
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--red-primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+        }
+        
+        /* Hero Background */
+        .hero-bg { 
+            background: linear-gradient(135deg, rgba(17,24,39,0.92), rgba(31,41,55,0.88)), 
+                        url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=2000') center/cover no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, var(--red-glow), transparent 50%);
+            animation: heroGlow 8s ease-in-out infinite;
+        }
+        
+        @keyframes heroGlow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
+        }
+        
+        /* Floating Particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--red-primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: floatParticle 15s linear infinite;
+        }
+        
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        /* Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Stagger children */
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .stagger-children.active > *:nth-child(1) { transition-delay: 0.1s; }
+        .stagger-children.active > *:nth-child(2) { transition-delay: 0.2s; }
+        .stagger-children.active > *:nth-child(3) { transition-delay: 0.3s; }
+        .stagger-children.active > *:nth-child(4) { transition-delay: 0.4s; }
+        .stagger-children.active > *:nth-child(5) { transition-delay: 0.5s; }
+        .stagger-children.active > *:nth-child(6) { transition-delay: 0.6s; }
+        
+        .stagger-children.active > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Hero Text Animation */
+        .hero-title {
+            overflow: hidden;
+        }
+        
+        .hero-title span {
+            display: inline-block;
+            transform: translateY(100%);
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        .hero-title span:nth-child(2) { animation-delay: 0.1s; }
+        .hero-title span:nth-child(3) { animation-delay: 0.2s; }
+        .hero-title span:nth-child(4) { animation-delay: 0.3s; }
+        
+        @keyframes slideUp {
+            to { transform: translateY(0); }
+        }
+        
+        /* Glowing Button */
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--red-primary), #ef4444);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-glow:hover::before {
+            left: 100%;
+        }
+        
+        .btn-glow:hover {
+            box-shadow: 0 0 30px var(--red-glow), 0 0 60px var(--red-glow);
+            transform: translateY(-2px);
+        }
+        
+        /* Service Cards */
+        .service-card {
+            position: relative;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--red-primary), #f87171);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--red-light), #fff);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, var(--red-primary), #ef4444);
+            transform: rotate(10deg) scale(1.1);
+        }
+        
+        .service-card:hover .service-icon i {
+            color: white;
+        }
+        
+        /* Stats Counter */
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--red-primary), #f87171);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Parallax Section */
+        .parallax-section {
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+        
+        /* Review Cards */
+        .review-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .review-card::after {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            font-size: 8rem;
+            font-family: Georgia, serif;
+            color: var(--red-light);
+            line-height: 1;
+            pointer-events: none;
+        }
+        
+        .review-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 30px 60px -15px rgba(220, 38, 38, 0.2);
+        }
+        
+        /* Form Inputs */
+        .form-input {
+            transition: all 0.3s ease;
+            border: 2px solid var(--grey-200);
+        }
+        
+        .form-input:focus {
+            border-color: var(--red-primary);
+            box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
+        }
+        
+        /* Floating Label Effect */
+        .input-group {
+            position: relative;
+        }
+        
+        .input-group label {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--grey-400);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            background: white;
+            padding: 0 0.5rem;
+        }
+        
+        .input-group textarea ~ label {
+            top: 1.5rem;
+            transform: none;
+        }
+        
+        .input-group input:focus ~ label,
+        .input-group input:not(:placeholder-shown) ~ label,
+        .input-group textarea:focus ~ label,
+        .input-group textarea:not(:placeholder-shown) ~ label {
+            top: 0;
+            font-size: 0.75rem;
+            color: var(--red-primary);
+        }
+        
+        /* Magnetic Button Effect */
+        .magnetic-btn {
+            transition: transform 0.3s ease;
+        }
+        
+        /* Navbar Animation */
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--red-primary);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            transform: translateX(0);
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--red-primary), #f87171, var(--red-primary));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientFlow 3s linear infinite;
+        }
+        
+        @keyframes gradientFlow {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+        
+        /* Pulse Ring */
+        .pulse-ring {
+            position: relative;
+        }
+        
+        .pulse-ring::before,
+        .pulse-ring::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--red-primary);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulseRing 2s ease-out infinite;
+        }
+        
+        .pulse-ring::after {
+            animation-delay: 1s;
+        }
+        
+        @keyframes pulseRing {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+        }
+        
+        /* Electric Spark Effect */
+        .spark {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .spark-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--red-primary), transparent);
+            animation: sparkMove 0.5s ease-out;
+        }
+        
+        @keyframes sparkMove {
+            0% { transform: scaleX(0); opacity: 1; }
+            100% { transform: scaleX(1); opacity: 0; }
+        }
+        
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Hamburger Animation */
+        .hamburger span {
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
+        /* Counter Animation */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cursor, .cursor-dot {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem !important;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+        
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+        }
+        
+        .tooltip::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px);
+            background: var(--grey-900);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .tooltip:hover::before {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <i class="fa-solid fa-bolt preloader-bolt"></i>
+        <div class="preloader-bar">
+            <div class="preloader-progress"></div>
+        </div>
+        <p class="text-gray-400 mt-4 text-sm tracking-widest uppercase">Powering Up</p>
+    </div>
+    
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- Navbar -->
+    <nav class="bg-white/95 backdrop-blur-lg border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="relative">
+                    <i class="fa-solid fa-bolt text-3xl text-red-600 group-hover:scale-110 transition-transform duration-300"></i>
+                    <div class="absolute inset-0 bg-red-600 blur-lg opacity-0 group-hover:opacity-30 transition-opacity"></div>
+                </div>
+                <h1 class="text-2xl font-bold tracking-tight">
+                    <span class="text-gray-900">Revamp</span>
+                    <span class="text-red-600">Athens</span>
+                </h1>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium">
+                <a href="#services" class="nav-link text-gray-600 hover:text-red-600 transition-colors py-2">Services</a>
+                <a href="#about" class="nav-link text-gray-600 hover:text-red-600 transition-colors py-2">About</a>
+                <a href="#reviews" class="nav-link text-gray-600 hover:text-red-600 transition-colors py-2">Reviews</a>
+                <a href="#contact" class="nav-link text-gray-600 hover:text-red-600 transition-colors py-2">Contact</a>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <a href="tel:7062481131" class="btn-glow text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2 shadow-lg magnetic-btn">
+                    <i class="fa-solid fa-phone"></i> 
+                    <span class="hidden sm:inline">(706) 248-1131</span>
+                </a>
+                
+                <!-- Mobile Menu Button -->
+                <button class="hamburger md:hidden flex flex-col gap-1.5 p-2" id="menuBtn">
+                    <span class="w-6 h-0.5 bg-gray-800 block"></span>
+                    <span class="w-6 h-0.5 bg-gray-800 block"></span>
+                    <span class="w-6 h-0.5 bg-gray-800 block"></span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu fixed top-0 right-0 w-full h-screen bg-white z-50 flex flex-col items-center justify-center gap-8 text-2xl font-semibold md:hidden" id="mobileMenu">
+            <button class="absolute top-6 right-6 text-3xl text-gray-600" id="closeMenu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <a href="#services" class="text-gray-800 hover:text-red-600 transition-colors mobile-link">Services</a>
+            <a href="#about" class="text-gray-800 hover:text-red-600 transition-colors mobile-link">About</a>
+            <a href="#reviews" class="text-gray-800 hover:text-red-600 transition-colors mobile-link">Reviews</a>
+            <a href="#contact" class="text-gray-800 hover:text-red-600 transition-colors mobile-link">Contact</a>
+            <a href="tel:7062481131" class="btn-glow text-white px-8 py-4 rounded-xl font-semibold flex items-center gap-3 mt-4">
+                <i class="fa-solid fa-phone"></i> Call Now
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-bg min-h-screen flex items-center text-white relative">
+        <div class="particles" id="particles"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 py-20 relative z-10">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-full text-sm mb-8 border border-white/20 animate-pulse">
+                    <span class="flex h-2 w-2 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                    </span>
+                    Google Verified • 100+ Reviews • Family-Owned
+                </div>
+                
+                <h2 class="hero-title text-5xl md:text-7xl font-bold leading-tight mb-6">
+                    <span class="block overflow-hidden"><span>Your Local</span></span>
+                    <span class="block overflow-hidden"><span class="gradient-text">Athens</span></span>
+                    <span class="block overflow-hidden"><span>Electrician</span></span>
+                </h2>
+                
+                <p class="text-xl md:text-2xl mb-10 text-white/80 leading-relaxed reveal-on-scroll">
+                    Expert residential electrical services in Athens, GA. 
+                    <span class="text-red-400 font-semibold">Fast, safe, and trusted.</span>
+                </p>
+                
+                <div class="flex flex-wrap gap-4 reveal-on-scroll" style="transition-delay: 0.2s;">
+                    <a href="tel:7062481131" class="btn-glow bg-red-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg flex items-center gap-3 shadow-2xl magnetic-btn">
+                        <i class="fa-solid fa-phone animate-bounce"></i> Call Now (706) 248-1131
+                    </a>
+                    <a href="#contact" class="border-2 border-white/50 hover:bg-white hover:text-gray-900 px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 hover:scale-105">
+                        Get a Free Quote
+                    </a>
+                </div>
+                
+                <div class="mt-12 flex flex-wrap items-center gap-6 text-white/70 reveal-on-scroll" style="transition-delay: 0.4s;">
+                    <p class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-red-400"></i> Same-day service
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-red-400"></i> Licensed & Insured
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-red-400"></i> Free estimates
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2">
+            <span class="text-white/50 text-xs uppercase tracking-widest">Scroll</span>
+            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
+                <div class="w-1.5 h-3 bg-red-500 rounded-full animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="bg-gray-900 py-8 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-red-600/10 via-transparent to-red-600/10"></div>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 text-white/60">
+                <div class="flex items-center gap-3 hover:text-white transition-colors">
+                    <i class="fa-brands fa-google text-2xl text-red-500"></i>
+                    <span class="font-medium">Google Verified</span>
+                </div>
+                <div class="flex items-center gap-3 hover:text-white transition-colors">
+                    <i class="fa-solid fa-award text-2xl text-red-500"></i>
+                    <span class="font-medium">Nextdoor Favorite</span>
+                </div>
+                <div class="flex items-center gap-3 hover:text-white transition-colors">
+                    <i class="fa-solid fa-shield-halved text-2xl text-red-500"></i>
+                    <span class="font-medium">Fully Insured</span>
+                </div>
+                <div class="flex items-center gap-3 hover:text-white transition-colors">
+                    <i class="fa-solid fa-certificate text-2xl text-red-500"></i>
+                    <span class="font-medium">Licensed Professional</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="max-w-7xl mx-auto px-6 py-24">
+        <div class="text-center mb-16 reveal">
+            <span class="inline-block px-5 py-2 bg-red-100 text-red-700 rounded-full text-sm font-semibold tracking-wide uppercase">
+                Our Services
+            </span>
+            <h2 class="text-4xl md:text-5xl font-bold mt-6 text-gray-900">
+                Residential Electrical <span class="gradient-text">Services</span>
+            </h2>
+            <p class="text-gray-600 mt-4 max-w-lg mx-auto text-lg">
+                From simple fixes to full home revamps — we handle it all with expertise and care.
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
+            <div class="service-card p-8 shadow-lg border border-gray-100">
+                <div class="service-icon mb-6">
+                    <i class="fa-solid fa-plug text-3xl text-red-600"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3 text-gray-900">Circuit Diagnosis & Repair</h3>
+                <p class="text-gray-600 leading-relaxed">Fast troubleshooting and fixes for faulty circuits, breakers, and wiring issues.</p>
+                <a href="#contact" class="inline-flex items-center gap-2 mt-4 text-red-600 font-semibold hover:gap-3 transition-all">
+                    Learn More <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="service-card p-8 shadow-lg border border-gray-100">
+                <div class="service-icon mb-6">
+                    <i class="fa-solid fa-lightbulb text-3xl text-red-600"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3 text-gray-900">Lights & Outlet Installations</h3>
+                <p class="text-gray-600 leading-relaxed">New fixtures, recessed lighting, smart switches, and additional outlets installed with precision.</p>
+                <a href="#contact" class="inline-flex items-center gap-2 mt-4 text-red-600 font-semibold hover:gap-3 transition-all">
+                    Learn More <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="service-card p-8 shadow-lg border border-gray-100">
+                <div class="service-icon mb-6">
+                    <i class="fa-solid fa-house-signal text-3xl text-red-600"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3 text-gray-900">Smart Home Devices</h3>
+                <p class="text-gray-600 leading-relaxed">Install smart lighting, outlets, thermostats, security systems, and more for modern living.</p>
+                <a href="#contact" class="inline-flex items-center gap-2 mt-4 text-red-600 font-semibold hover:gap-3 transition-all">
+                    Learn More <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="service-card p-8 shadow-lg border border-gray-100">
+                <div class="service-icon mb-6">
+                    <i class="fa-solid fa-arrow-up-from-bracket text-3xl text-red-600"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3 text-gray-900">Electrical Upgrades</h3>
+                <p class="text-gray-600 leading-relaxed">Panel upgrades, service upgrades, EV charger installation, whole-home rewiring.</p>
+                <a href="#contact" class="inline-flex items-center gap-2 mt-4 text-red-600 font-semibold hover:gap-3 transition-all">
+                    Learn More <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="service-card p-8 shadow-lg border border-gray-100">
+                <div class="service-icon mb-6">
+                    <i class="fa-solid fa-wrench text-3xl text-red-600"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3 text-gray-900">Repairs & Troubleshooting</h3>
+                <p class="text-gray-600 leading-relaxed">Any electrical problem — we diagnose and repair quickly and safely.</p>
+                <a href="#contact" class="inline-flex items-center gap-2 mt-4 text-red-600 font-semibold hover:gap-3 transition-all">
+                    Learn More <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="service-card p-8 shadow-lg border border-gray-100">
+                <div class="service-icon mb-6">
+                    <i class="fa-solid fa-shield-halved text-3xl text-red-600"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3 text-gray-900">Safety Inspections</h3>
+                <p class="text-gray-600 leading-relaxed">Full home electrical safety checks, code compliance, and preventive maintenance.</p>
+                <a href="#contact" class="inline-flex items-center gap-2 mt-4 text-red-600 font-semibold hover:gap-3 transition-all">
+                    Learn More <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-red-600/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-red-600/10 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="reveal-scale">
+                    <div class="stat-number counter" data-target="100">0</div>
+                    <p class="text-gray-400 mt-2 text-lg">Google Reviews</p>
+                </div>
+                <div class="reveal-scale" style="transition-delay: 0.1s;">
+                    <div class="stat-number counter" data-target="500">0</div>
+                    <p class="text-gray-400 mt-2 text-lg">Jobs Completed</p>
+                </div>
+                <div class="reveal-scale" style="transition-delay: 0.2s;">
+                    <div class="stat-number counter" data-target="10">0</div>
+                    <p class="text-gray-400 mt-2 text-lg">Years Experience</p>
+                </div>
+                <div class="reveal-scale" style="transition-delay: 0.3s;">
+                    <div class="stat-number">100<span class="text-2xl">%</span></div>
+                    <p class="text-gray-400 mt-2 text-lg">Satisfaction Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal-left">
+                    <span class="inline-block px-5 py-2 bg-red-100 text-red-700 rounded-full text-sm font-semibold tracking-wide uppercase mb-6">
+                        About Us
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                        Meet <span class="gradient-text">Eduardo Serrano</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-6">
+                        I'm your locally licensed and insured electrician and owner of Revamp Athens Electrical Company. As a family-owned business based in Athens, GA, we specialize in residential electrical work — circuit diagnosis, light/outlet installations, smart devices, upgrades, repairs, and safety inspections.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+                        We're committed to serving our community with excellence, integrity, and fair pricing. Google Verified with 100+ reviews and voted "Favorite" on Nextdoor.
+                    </p>
+                    
+                    <div class="flex flex-wrap items-center gap-8 mb-8">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center">
+                                <i class="fa-solid fa-medal text-2xl text-red-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-900">Licensed</p>
+                                <p class="text-sm text-gray-500">Professional</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center">
+                                <i class="fa-solid fa-shield-halved text-2xl text-red-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-900">Fully Insured</p>
+                                <p class="text-sm text-gray-500">Peace of Mind</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="btn-glow inline-flex items-center gap-3 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-xl magnetic-btn">
+                        <i class="fa-solid fa-comments"></i> Let's Talk
+                    </a>
+                </div>
+                
+                <div class="reveal-right relative">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-10 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-40 h-40 bg-red-600/20 rounded-full blur-3xl"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="w-32 h-32 bg-gradient-to-br from-red-500 to-red-700 rounded-full flex items-center justify-center mx-auto mb-8 pulse-ring">
+                                <i class="fa-solid fa-user-tie text-5xl"></i>
+                            </div>
+                            
+                            <blockquote class="text-xl italic text-gray-300 text-center mb-6">
+                                "Honest, fairly priced, and gets the job done right the first time."
+                            </blockquote>
+                            
+                            <div class="flex justify-center gap-1 mb-4">
+                                <i class="fa-solid fa-star text-red-400"></i>
+                                <i class="fa-solid fa-star text-red-400"></i>
+                                <i class="fa-solid fa-star text-red-400"></i>
+                                <i class="fa-solid fa-star text-red-400"></i>
+                                <i class="fa-solid fa-star text-red-400"></i>
+                            </div>
+                            
+                            <p class="text-center text-gray-400">— Eduardo Serrano</p>
+                            <p class="text-center text-sm text-gray-500">Owner & Licensed Electrician</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl p-5 shadow-2xl reveal-scale">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
+                                <i class="fa-solid fa-heart text-red-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-900">Voted Favorite</p>
+                                <p class="text-sm text-gray-500">on Nextdoor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="inline-block px-5 py-2 bg-red-100 text-red-700 rounded-full text-sm font-semibold tracking-wide uppercase">
+                    Testimonials
+                </span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-6 text-gray-900">
+                    What Athens Homeowners <span class="gradient-text">Say</span>
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 stagger-children">
+                <div class="review-card shadow-lg">
+                    <div class="flex gap-1 text-red-500 mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 text-lg italic leading-relaxed mb-6">
+                        "Eduardo was fast, professional, and fixed my circuit issue same day. Highly recommend!"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-user text-gray-500"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900">Local Homeowner</p>
+                            <p class="text-sm text-gray-500 flex items-center gap-2">
+                                <i class="fa-solid fa-location-dot text-red-500"></i> Athens, GA (Nextdoor)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="review-card shadow-lg">
+                    <div class="flex gap-1 text-red-500 mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 text-lg italic leading-relaxed mb-6">
+                        "Great service, honest pricing, and excellent work on our new smart lighting. 5 stars!"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-user text-gray-500"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900">Verified Customer</p>
+                            <p class="text-sm text-gray-500 flex items-center gap-2">
+                                <i class="fa-brands fa-google text-red-500"></i> Google Review
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="review-card shadow-lg">
+                    <div class="flex gap-1 text-red-500 mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 text-lg italic leading-relaxed mb-6">
+                        "If you need a reliable electrician in Athens, call Revamp Athens. Eduardo is the best!"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-user text-gray-500"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900">Happy Client</p>
+                            <p class="text-sm text-gray-500 flex items-center gap-2">
+                                <i class="fa-brands fa-facebook text-red-500"></i> Facebook Recommendation
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Google Review Link -->
+            <div class="text-center mt-12 reveal">
+                <a href="#" class="inline-flex items-center gap-3 text-gray-600 hover:text-red-600 transition-colors group">
+                    <span>See all 100+ reviews on Google</span>
+                    <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-red-600 to-red-700 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.05\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10 reveal">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                Need Electrical Work Done Today?
+            </h2>
+            <p class="text-xl text-red-100 mb-10">
+                Same-day service available for most jobs. Call now for a free quote!
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="tel:7062481131" class="bg-white text-red-600 hover:bg-gray-100 px-10 py-5 rounded-2xl font-bold text-lg flex items-center gap-3 transition-all hover:scale-105 hover:shadow-2xl magnetic-btn">
+                    <i class="fa-solid fa-phone animate-pulse"></i> (706) 248-1131
+                </a>
+                <a href="#contact" class="border-2 border-white text-white hover:bg-white hover:text-red-600 px-10 py-5 rounded-2xl font-bold text-lg transition-all hover:scale-105">
+                    Request Quote
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="bg-gray-900 text-white py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="reveal-left">
+                    <span class="inline-block px-5 py-2 bg-red-600/20 text-red-400 rounded-full text-sm font-semibold tracking-wide uppercase mb-6">
+                        Contact Us
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                        Ready to <span class="gradient-text">Revamp</span> Your Electrical System?
+                    </h2>
+                    <p class="text-gray-400 text-lg mb-10">
+                        Call, text, or email us today for a free quote. Same-day service available for most jobs.
+                    </p>
+                    
+                    <div class="space-y-8">
+                        <a href="tel:7062481131" class="flex items-start gap-6 group hover:translate-x-2 transition-transform">
+                            <div class="w-16 h-16 bg-red-600/20 rounded-2xl flex items-center justify-center group-hover:bg-red-600 transition-colors">
+                                <i class="fa-solid fa-phone text-2xl text-red-400 group-hover:text-white transition-colors"></i>
+                            </div>
+                            <div>
+                                <p class="text-3xl font-bold group-hover:text-red-400 transition-colors">(706) 248-1131</p>
+                                <p class="text-gray-500 mt-1">Call or text • 24/7 emergency line</p>
+                            </div>
+                        </a>
+                        
+                        <a href="mailto:edserrano@revampathens.com" class="flex items-start gap-6 group hover:translate-x-2 transition-transform">
+                            <div class="w-16 h-16 bg-red-600/20 rounded-2xl flex items-center justify-center group-hover:bg-red-600 transition-colors">
+                                <i class="fa-solid fa-envelope text-2xl text-red-400 group-hover:text-white transition-colors"></i>
+                            </div>
+                            <div>
+                                <p class="text-xl font-semibold group-hover:text-red-400 transition-colors">edserrano@revampathens.com</p>
+                                <p class="text-gray-500 mt-1">Email us anytime</p>
+                            </div>
+                        </a>
+                        
+                        <div class="flex items-start gap-6">
+                            <div class="w-16 h-16 bg-red-600/20 rounded-2xl flex items-center justify-center">
+                                <i class="fa-solid fa-location-dot text-2xl text-red-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-xl font-semibold">215 Clarke Dr</p>
+                                <p class="text-gray-500">Athens, GA 30605</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="mt-12">
+                        <p class="text-gray-500 mb-4">Follow us</p>
+                        <div class="flex gap-4">
+                            <a href="#" class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center hover:bg-red-600 transition-colors tooltip" data-tooltip="Facebook">
+                                <i class="fa-brands fa-facebook-f text-lg"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center hover:bg-red-600 transition-colors tooltip" data-tooltip="Google">
+                                <i class="fa-brands fa-google text-lg"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center hover:bg-red-600 transition-colors tooltip" data-tooltip="Nextdoor">
+                                <i class="fa-solid fa-n text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="reveal-right">
+                    <form class="bg-white text-gray-900 rounded-3xl p-8 md:p-10 shadow-2xl" id="contactForm">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-900">Get Your Free Quote</h3>
+                        
+                        <div class="space-y-5">
+                            <div class="input-group">
+                                <input type="text" id="name" placeholder=" " required
+                                    class="form-input w-full px-5 py-4 rounded-xl focus:outline-none">
+                                <label for="name">Your Name</label>
+                            </div>
+                            
+                            <div class="input-group">
+                                <input type="tel" id="phone" placeholder=" " required
+                                    class="form-input w-full px-5 py-4 rounded-xl focus:outline-none">
+                                <label for="phone">Phone Number</label>
+                            </div>
+                            
+                            <div class="input-group">
+                                <input type="email" id="email" placeholder=" "
+                                    class="form-input w-full px-5 py-4 rounded-xl focus:outline-none">
+                                <label for="email">Email (optional)</label>
+                            </div>
+                            
+                            <div>
+                                <select class="form-input w-full px-5 py-4 rounded-xl focus:outline-none text-gray-600">
+                                    <option value="">Select Service Needed</option>
+                                    <option value="circuit">Circuit Diagnosis & Repair</option>
+                                    <option value="lighting">Lights & Outlet Installation</option>
+                                    <option value="smart">Smart Home Devices</option>
+                                    <option value="upgrade">Electrical Upgrades</option>
+                                    <option value="repair">Repairs & Troubleshooting</option>
+                                    <option value="inspection">Safety Inspection</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="input-group">
+                                <textarea id="message" rows="4" placeholder=" " 
+                                    class="form-input w-full px-5 py-4 rounded-xl focus:outline-none resize-none"></textarea>
+                                <label for="message">Describe your electrical needs...</label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn-glow w-full text-white font-bold py-5 rounded-xl mt-6 text-lg flex items-center justify-center gap-3 magnetic-btn">
+                            <span>Send Message</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                        
+                        <p class="text-xs text-gray-500 text-center mt-4 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-clock text-red-500"></i>
+                            We respond within 1 hour during business hours
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="h-80 bg-gray-800 relative">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106081.98181040642!2d-83.46619!3d33.94799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f66ce42d37bf69%3A0x3c8f5d7d0c6d3c3c!2sAthens%2C%20GA!5e0!3m2!1sen!2sus!4v1635000000000!5m2!1sen!2sus"
+            width="100%" 
+            height="100%" 
+            style="border:0; filter: grayscale(100%) contrast(1.1);" 
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe>
+        <div class="absolute top-4 left-4 bg-white rounded-2xl p-4 shadow-xl">
+            <p class="font-bold text-gray-900 flex items-center gap-2">
+                <i class="fa-solid fa-bolt text-red-600"></i>
+                Serving Athens, GA & Surrounding Areas
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-gray-400 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 text-white mb-4">
+                        <i class="fa-solid fa-bolt text-3xl text-red-500"></i>
+                        <span class="font-bold text-2xl">Revamp Athens</span>
+                    </div>
+                    <p class="text-gray-500 max-w-md leading-relaxed">
+                        Your trusted local electrician in Athens, GA. Licensed, insured, and committed to excellence. Family-owned and operated with pride.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="hover:text-red-400 transition-colors">Services</a></li>
+                        <li><a href="#about" class="hover:text-red-400 transition-colors">About Us</a></li>
+                        <li><a href="#reviews" class="hover:text-red-400 transition-colors">Reviews</a></li>
+                        <li><a href="#contact" class="hover:text-red-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-red-400 transition-colors">Circuit Repair</a></li>
+                        <li><a href="#" class="hover:text-red-400 transition-colors">Light Installation</a></li>
+                        <li><a href="#" class="hover:text-red-400 transition-colors">Smart Home</a></li>
+                        <li><a href="#" class="hover:text-red-400 transition-colors">Safety Inspection</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm">© 2024 Revamp Athens Electrical Company. All Rights Reserved.</p>
+                <div class="flex items-center gap-6 text-sm">
+                    <span class="flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved text-red-500"></i>
+                        Licensed & Insured
+                    </span>
+                    <span class="flex items-center gap-2">
+                        <i class="fa-brands fa-google text-red-500"></i>
+                        Google Verified
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 w-14 h-14 bg-red-600 text-white rounded-full shadow-2xl flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-red-700 hover:scale-110 z-40">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 2000);
+        });
+        
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const cursorDot = document.getElementById('cursorDot');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+            cursorDot.style.left = e.clientX - 3 + 'px';
+            cursorDot.style.top = e.clientY - 3 + 'px';
+        });
+        
+        document.querySelectorAll('a, button, .magnetic-btn').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+        
+        // Particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+        
+        // Scroll Reveal
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children');
+        
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+        
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        
+        const animateCounter = (counter) => {
+            const target = parseInt(counter.dataset.target);
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    counter.textContent = Math.floor(current) + '+';
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target + '+';
+                }
+            };
+            
+            updateCounter();
+        };
+        
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        counters.forEach(counter => counterObserver.observe(counter));
+        
+        // Mobile Menu
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            menuBtn.classList.add('active');
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            menuBtn.classList.remove('active');
+        });
+        
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                menuBtn.classList.remove('active');
+            });
+        });
+        
+        // Back to Top
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.style.opacity = '1';
+                backToTop.style.visibility = 'visible';
+            } else {
+                backToTop.style.opacity = '0';
+                backToTop.style.visibility = 'hidden';
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Magnetic Button Effect
+        document.querySelectorAll('.magnetic-btn').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0, 0)';
+            });
+        });
+        
+        // Form Submission Effect
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent!';
+            btn.style.background = '#16a34a';
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span>Send Message</span><i class="fa-solid fa-paper-plane"></i>';
+                btn.style.background = '';
+                e.target.reset();
+            }, 3000);
+        });
+        
+        // Navbar Scroll Effect
+        let lastScroll = 0;
+        const nav = document.querySelector('nav');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            
+            if (currentScroll > 100) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+            
+            lastScroll = currentScroll;
+        });
+        
+        // Smooth Scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        console.log('%c⚡ Revamp Athens Premium Website Ready', 'color:#dc2626; font-weight:700; font-size:16px');
+    </script>
+</body>
+</html>
